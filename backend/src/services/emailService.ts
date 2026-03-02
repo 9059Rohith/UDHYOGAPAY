@@ -280,3 +280,130 @@ export const sendApplicationRejectionEmail = async (
     throw new Error(`Failed to send email: ${error.message}`);
   }
 };
+
+interface PasswordResetEmailData {
+  email: string;
+  name: string;
+  resetUrl: string;
+  role: string;
+}
+
+export const sendPasswordResetEmail = async (data: PasswordResetEmailData) => {
+  try {
+    const transporter = createTransporter();
+
+    const mailOptions = {
+      from: `"Udhyoga Pay" <${process.env.EMAIL_USER}>`,
+      to: data.email,
+      subject: '🔐 Password Reset Request - Udhyoga Pay',
+      html: `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              line-height: 1.6;
+              color: #333;
+              max-width: 600px;
+              margin: 0 auto;
+              padding: 20px;
+            }
+            .header {
+              background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+              color: white;
+              padding: 30px;
+              text-align: center;
+              border-radius: 10px 10px 0 0;
+            }
+            .content {
+              background: #f9f9f9;
+              padding: 30px;
+              border: 1px solid #e0e0e0;
+            }
+            .reset-box {
+              background: white;
+              border: 2px solid #667eea;
+              border-radius: 8px;
+              padding: 20px;
+              margin: 20px 0;
+              text-align: center;
+            }
+            .button {
+              display: inline-block;
+              background: #667eea;
+              color: white;
+              padding: 15px 30px;
+              text-decoration: none;
+              border-radius: 5px;
+              margin: 20px 0;
+              font-weight: bold;
+            }
+            .warning {
+              background: #fff3cd;
+              border: 1px solid #ffc107;
+              border-radius: 5px;
+              padding: 15px;
+              margin: 15px 0;
+            }
+            .footer {
+              background: #333;
+              color: white;
+              padding: 20px;
+              text-align: center;
+              border-radius: 0 0 10px 10px;
+              font-size: 14px;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <h1>🔐 Password Reset Request</h1>
+          </div>
+          
+          <div class="content">
+            <h2>Hello ${data.name},</h2>
+            
+            <p>We received a request to reset the password for your <strong>${data.role}</strong> account on Udhyoga Pay.</p>
+            
+            <div class="reset-box">
+              <p>Click the button below to reset your password:</p>
+              <a href="${data.resetUrl}" class="button">Reset Password</a>
+              <p style="margin-top: 15px; font-size: 12px; color: #666;">
+                Or copy and paste this link in your browser:<br>
+                <span style="word-break: break-all;">${data.resetUrl}</span>
+              </p>
+            </div>
+            
+            <div class="warning">
+              <strong>⚠️ Important:</strong>
+              <ul style="margin: 5px 0; padding-left: 20px;">
+                <li>This link will expire in <strong>10 minutes</strong></li>
+                <li>If you didn't request this reset, please ignore this email</li>
+                <li>Your password will remain unchanged</li>
+              </ul>
+            </div>
+            
+            <p>If you're having trouble with the button above, copy and paste the URL below into your web browser:</p>
+            <p style="word-break: break-all; background: #f0f0f0; padding: 10px; border-radius: 5px; font-size: 12px;">
+              ${data.resetUrl}
+            </p>
+          </div>
+          
+          <div class="footer">
+            <p>© 2026 Udhyoga Pay. All rights reserved.</p>
+            <p>This is an automated email. Please do not reply.</p>
+          </div>
+        </body>
+        </html>
+      `
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    console.log('✅ Password reset email sent:', info.messageId);
+    return { success: true, messageId: info.messageId };
+  } catch (error: any) {
+    console.error('❌ Email sending failed:', error);
+    throw new Error(`Failed to send email: ${error.message}`);
+  }
+};

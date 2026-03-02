@@ -5,6 +5,8 @@ import { Navbar } from '../../components/common/Navbar';
 import { Alert } from '../../components/common/Alert';
 import { submitWorkerApplication } from '../../services/workerApplicationService';
 import { PROFESSIONS } from '../../utils/constants';
+import mainLogo from '../../assets/main_logo.png';
+import unityPeople from '../../assets/unity_people_holding_hands.png';
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
@@ -90,20 +92,23 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 to-gray-100">
       <Navbar />
       
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-600 animate-gradient bg-size-200"></div>
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-pink-400 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-40 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+      {/* Clean Professional Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-white to-blue-50"></div>
+      
+      {/* Decorative Elements */}
+      <div className="absolute top-10 left-10 w-64 h-64 opacity-10">
+        <img src={mainLogo} alt="decoration" className="w-full h-full object-contain" />
+      </div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 opacity-15">
+        <img src={unityPeople} alt="decoration" className="w-full h-full object-contain" />
       </div>
       
       <div className="relative flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
-        <div className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl p-8 transform hover:scale-105 transition-transform duration-300">
+        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900">Create Account</h2>
             <p className="mt-2 text-sm text-gray-600">Join Udhyoga Pay today</p>
@@ -324,25 +329,6 @@ const Register: React.FC = () => {
         </div>
       </div>
       </div>
-      
-      <style>{`
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(20px, -50px) scale(1.1); }
-          50% { transform: translate(-20px, 20px) scale(0.9); }
-          75% { transform: translate(-50px, -20px) scale(1.05); }
-        }
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-blob { animation: blob 7s infinite; }
-        .animate-gradient { animation: gradient 3s ease infinite; }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
-        .bg-size-200 { background-size: 200% 200%; }
-      `}</style>
     </div>
   );
 };

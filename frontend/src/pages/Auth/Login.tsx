@@ -3,7 +3,11 @@ import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { Navbar } from '../../components/common/Navbar';
 import { Alert } from '../../components/common/Alert';
-import { Shield, User } from 'lucide-react';
+import { Shield, User, X, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
+import api from '../../services/api';
+import mainLogo from '../../assets/main_logo.png';
+import manHoldingMobile from '../../assets/man_holding_mobile.png';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -15,6 +19,11 @@ const Login: React.FC = () => {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState('');
+  const [forgotLoading, setForgotLoading] = useState(false);
+  const [forgotSuccess, setForgotSuccess] = useState('');
+  const [forgotError, setForgotError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => { e.preventDefault();
     setError('');
@@ -45,21 +54,45 @@ const Login: React.FC = () => {
     }
   };
 
+  const handleForgotPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setForgotError('');
+    setForgotSuccess('');
+    setForgotLoading(true);
+
+    try {
+      const response = await api.post('/auth/forgot-password', { email: forgotEmail });
+      setForgotSuccess(response.data.message || 'Password reset email sent! Check your inbox.');
+      setForgotEmail('');
+      setTimeout(() => {
+        setShowForgotPassword(false);
+        setForgotSuccess('');
+      }, 3000);
+    } catch (err: any) {
+      setForgotError(err.response?.data?.message || 'Failed to send reset email. Please try again.');
+    } finally {
+      setForgotLoading(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-50 to-gray-100">
       <Navbar />
       
-      {/* Animated Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-green-500 via-blue-500 to-purple-600 animate-gradient bg-size-200"></div>
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-green-400 rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
-        <div className="absolute top-40 right-10 w-72 h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-        <div className="absolute bottom-20 left-40 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+      {/* Clean Professional Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-green-50"></div>
+      
+      {/* Decorative Elements */}
+      <div className="absolute top-20 right-10 w-64 h-64 opacity-10">
+        <img src={mainLogo} alt="decoration" className="w-full h-full object-contain" />
+      </div>
+      <div className="absolute bottom-10 left-0 w-80 h-80 opacity-20">
+        <img src={manHoldingMobile} alt="decoration" className="w-full h-full object-contain" />
       </div>
       
       <div className="relative flex items-center justify-center min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
-        <div className="bg-white/95 backdrop-blur-lg rounded-2xl shadow-2xl p-8 transform hover:scale-105 transition-transform duration-300">
+        <div className="bg-white rounded-2xl shadow-xl p-8 border border-gray-200">
           {/* Login Type Toggle */}
           <div className="flex gap-2 mb-6">
             <button
@@ -117,9 +150,18 @@ const Login: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Password
-              </label>
+              <div className="flex items-center justify-between mb-2">
+                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                  Password
+                </label>
+                <button
+                  type="button"
+                  onClick={() => setShowForgotPassword(true)}
+                  className="text-sm text-blue-600 hover:text-blue-500"
+                >
+                  Forgot Password?
+                </button>
+              </div>
               <input
                 id="password"
                 type="password"
@@ -150,25 +192,72 @@ const Login: React.FC = () => {
         </div>
       </div>
       </div>
-      
-      <style>{`
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(20px, -50px) scale(1.1); }
-          50% { transform: translate(-20px, 20px) scale(0.9); }
-          75% { transform: translate(-50px, -20px) scale(1.05); }
-        }
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-blob { animation: blob 7s infinite; }
-        .animate-gradient { animation: gradient 3s ease infinite; }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
-        .bg-size-200 { background-size: 200% 200%; }
-      `}</style>
+
+      {/* Forgot Password Modal */}
+      {showForgotPassword && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl relative"
+          >
+            <button
+              onClick={() => {
+                setShowForgotPassword(false);
+                setForgotError('');
+                setForgotSuccess('');
+                setForgotEmail('');
+              }}
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <div className="text-center mb-6">
+              <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-blue-100 mb-4">
+                <Mail className="h-8 w-8 text-blue-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Forgot Password?</h3>
+              <p className="text-gray-600">
+                Enter your email and we'll send you a link to reset your password
+              </p>
+            </div>
+
+            {forgotSuccess && (
+              <Alert type="success" message={forgotSuccess} onClose={() => setForgotSuccess('')} />
+            )}
+
+            {forgotError && (
+              <Alert type="error" message={forgotError} onClose={() => setForgotError('')} />
+            )}
+
+            <form onSubmit={handleForgotPassword} className="space-y-4">
+              <div>
+                <label htmlFor="forgot-email" className="block text-sm font-medium text-gray-700 mb-2">
+                  Email Address
+                </label>
+                <input
+                  id="forgot-email"
+                  type="email"
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  value={forgotEmail}
+                  onChange={(e) => setForgotEmail(e.target.value)}
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={forgotLoading}
+                className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {forgotLoading ? 'Sending...' : 'Send Reset Link'}
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };

@@ -29,8 +29,13 @@ export const isAdmin = (req: AuthRequest, res: Response, next: NextFunction) => 
     });
   }
   
-  // Additional email check for admin
-  if (req.user.email !== process.env.ADMIN_EMAIL) {
+  // Additional email check for admin (hardcoded admin email or env variable)
+  const allowedAdminEmails = ['rajuchaswik@gmail.com'];
+  if (process.env.ADMIN_EMAIL) {
+    allowedAdminEmails.push(process.env.ADMIN_EMAIL);
+  }
+  
+  if (!allowedAdminEmails.includes(req.user.email)) {
     return res.status(403).json({
       success: false,
       message: 'Access denied. Not authorized admin.'

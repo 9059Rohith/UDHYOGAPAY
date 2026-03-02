@@ -26,6 +26,11 @@ import adminRoutes from './routes/admin';
 import workerApplicationRoutes from './routes/workerApplications';
 import matchingRoutes from './routes/matching';
 import chatRoutes from './routes/chat';
+import reviewRoutes from './routes/reviews';
+import payoutRoutes from './routes/payouts';
+import serviceCategoryRoutes from './routes/serviceCategories';
+import complaintRoutes from './routes/complaints';
+import accountDeletionRoutes from './routes/accountDeletion';
 
 // Initialize express app
 const app: Application = express();
@@ -76,6 +81,11 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/worker-applications', workerApplicationRoutes);
 app.use('/api/matching', matchingRoutes);
 app.use('/api/chat', chatRoutes);
+app.use('/api/reviews', reviewRoutes);
+app.use('/api/payouts', payoutRoutes);
+app.use('/api/service-categories', serviceCategoryRoutes);
+app.use('/api/complaints', complaintRoutes);
+app.use('/api/account-deletion', accountDeletionRoutes);
 
 // Health check route
 app.get('/health', (req, res) => {
@@ -96,6 +106,9 @@ app.get('/', (req, res) => {
       auth: '/api/auth',
       workers: '/api/workers',
       users: '/api/users',
+      reviews: '/api/reviews',
+      payouts: '/api/payouts',
+      serviceCategories: '/api/service-categories',
       bookings: '/api/bookings',
       matching: '/api/matching',
       admin: '/api/admin'

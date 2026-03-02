@@ -280,3 +280,37 @@ export const getAllOnlineWorkers = async (req: AuthRequest, res: Response) => {
     });
   }
 };
+
+/**
+ * Delete user account
+ * DELETE /api/users/account
+ */
+export const deleteAccount = async (req: AuthRequest, res: Response) => {
+  try {
+    const userId = req.user?.id;
+
+    if (!userId) {
+      return res.status(401).json({
+        success: false,
+        message: 'Unauthorized'
+      });
+    }
+
+    // First, delete associated worker profile if exists
+    await Worker.findOneAndDelete({ userId });
+
+    // Then delete the user account (this will also be imported from models)
+    const User = (await import('../models/User')).default;
+    await User.findByIdAndDelete(userId);
+
+    res.status(200).json({
+      success: true,
+      message: 'Account deleted successfully'
+    });
+  } catch (error: any) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+};

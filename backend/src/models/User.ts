@@ -7,12 +7,15 @@ export interface IUser extends Document {
   phone: string;
   password: string;
   role: 'user' | 'worker' | 'admin';
+  resetPasswordToken?: string;
+  resetPasswordExpire?: Date;
   location?: {
     type: string;
     coordinates: [number, number]; // [longitude, latitude]
   };
   createdAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
+  getResetPasswordToken(): string;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -46,6 +49,12 @@ const UserSchema = new Schema<IUser>({
     enum: ['user', 'worker', 'admin'],
     default: 'user'
   },
+  resetPasswordToken: {
+    type: String
+  },
+  resetPasswordExpire: {
+    type: Date
+  },
   location: {
     type: {
       type: String,
@@ -77,6 +86,25 @@ UserSchema.pre('save', async function(next) {
 // Compare password method
 UserSchema.methods.comparePassword = async function(candidatePassword: string): Promise<boolean> {
   return bcrypt.compare(candidatePassword, this.password);
+};
+
+// Generate password reset token
+UserSchema.methods.getResetPasswordToken = function(): string {
+  const crypto = require('crypto');
+  
+  // Generate token
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  
+  // Hash token and set to resetPasswordToken field
+  this.resetPasswordToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+  
+  // Set expiry time (10 minutes)
+  this.resetPasswordExpire = Date.now() + 10 * 60 * 1000;
+  
+  return resetToken;
 };
 
 // Create geospatial index

@@ -7,6 +7,9 @@ import { LoadingSpinner } from '../../components/common/LoadingSpinner';
 import { Pagination } from '../../components/common/Pagination';
 import { Alert } from '../../components/common/Alert';
 import { getPendingApplications, approveApplication, rejectApplication } from '../../services/workerApplicationService';
+import Reviews from './Reviews';
+import Payouts from './Payouts';
+import ServiceCategories from './ServiceCategories';
 
 interface WorkerApplication {
   _id: string;
@@ -66,7 +69,7 @@ interface Booking {
 }
 
 const AdminPanel: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'analytics' | 'pending' | 'bookings' | 'completed' | 'no-show' | 'live'>('analytics');
+  const [activeTab, setActiveTab] = useState<'analytics' | 'pending' | 'bookings' | 'completed' | 'no-show' | 'live' | 'reviews' | 'payouts' | 'services'>('analytics');
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [pendingApplications, setPendingApplications] = useState<WorkerApplication[]>([]);
   const [activeWorkers, setActiveWorkers] = useState<Worker[]>([]);
@@ -318,6 +321,36 @@ const AdminPanel: React.FC = () => {
               }`}
             >
               🗺️ Live Map
+            </button>
+            <button
+              onClick={() => setActiveTab('reviews')}
+              className={`py-4 px-6 font-semibold border-b-2 transition ${
+                activeTab === 'reviews'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              ⭐ Reviews
+            </button>
+            <button
+              onClick={() => setActiveTab('payouts')}
+              className={`py-4 px-6 font-semibold border-b-2 transition ${
+                activeTab === 'payouts'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              💰 Payouts
+            </button>
+            <button
+              onClick={() => setActiveTab('services')}
+              className={`py-4 px-6 font-semibold border-b-2 transition ${
+                activeTab === 'services'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              🛠️ Services
             </button>
           </div>
         </div>
@@ -888,6 +921,27 @@ const AdminPanel: React.FC = () => {
                     height="600px"
                   />
                 </div>
+              </div>
+            )}
+
+            {/* Reviews Tab */}
+            {activeTab === 'reviews' && (
+              <div>
+                <Reviews />
+              </div>
+            )}
+
+            {/* Payouts Tab */}
+            {activeTab === 'payouts' && (
+              <div>
+                <Payouts />
+              </div>
+            )}
+
+            {/* Services Tab */}
+            {activeTab === 'services' && (
+              <div>
+                <ServiceCategories />
               </div>
             )}
           </>

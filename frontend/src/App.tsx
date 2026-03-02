@@ -11,6 +11,7 @@ import React from 'react';
 // Auth Pages
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
+import ResetPassword from './pages/Auth/ResetPassword';
 
 // User Pages
 import UserHome from './pages/User/Home';
@@ -76,6 +77,7 @@ function App() {
                     {/* Auth Routes - redirect if already logged in */}
                     <Route path="/login" element={<AuthGuard><Login /></AuthGuard>} />
                     <Route path="/register" element={<AuthGuard><Register /></AuthGuard>} />
+                    <Route path="/reset-password/:token" element={<ResetPassword />} />
                     
                     {/* Worker Application - Public route */}
                     <Route path="/worker/pending-approval" element={<PendingApproval />} />

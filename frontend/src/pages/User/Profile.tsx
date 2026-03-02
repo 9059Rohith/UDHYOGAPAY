@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import {
   User, Mail, Phone, MapPin, Edit2, Save, X,
   Camera, Shield, Bell, Lock, CreditCard,
-  CheckCircle, Star, Activity, Settings, Calendar
+  CheckCircle, Star, Activity, Settings, Calendar, Trash2
 } from 'lucide-react';
 import { Navbar } from '../../components/common/Navbar';
 import { Footer } from '../../components/common/Footer';
@@ -13,6 +13,7 @@ import { Button } from '../../components/common/Button';
 import { userService } from '../../services/userService';
 import { bookingService } from '../../services/bookingService';
 import { LoadingSpinner } from '../../components/common/LoadingSpinner';
+import { useNavigate } from 'react-router-dom';
 import type { UserProfile as UserProfileType, Booking } from '../../types';
 
 // Import assets
@@ -21,10 +22,12 @@ import shakehand from '../../assets/shakehand.png';
 import stars from '../../assets/stars.png';
 
 const UserProfile: React.FC = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
   const [isEditing, setIsEditing] = useState(false);
   const [activeTab, setActiveTab] = useState('profile');
   const [loading, setLoading] = useState(true);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [profileInfo, setProfileInfo] = useState<UserProfileType | null>(null);
   const [bookings, setBookings] = useState<Booking[]>([]);
   
@@ -131,6 +134,20 @@ const UserProfile: React.FC = () => {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    try {
+      await userService.deleteAccount();
+      await logout();
+      setShowDeleteModal(false);
+      // Show success message
+      alert('Account deleted successfully');
+      navigate('/');
+    } catch (error) {
+      console.error('Error deleting account:', error);
+      alert('Failed to delete account. Please try again.');
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
@@ -200,17 +217,27 @@ const UserProfile: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Edit Button */}
+                  {/* Edit and Delete Buttons */}
                   <div className="flex gap-3">
                     {!isEditing ? (
-                      <Button
-                        variant="primary"
-                        onClick={() => setIsEditing(true)}
-                        className="gap-2"
-                      >
-                        <Edit2 className="w-4 h-4" />
-                        Edit Profile
-                      </Button>
+                      <>
+                        <Button
+                          variant="primary"
+                          onClick={() => setIsEditing(true)}
+                          className="gap-2"
+                        >
+                          <Edit2 className="w-4 h-4" />
+                          Edit Profile
+                        </Button>
+                        <Button
+                          variant="outline"
+                          onClick={() => setShowDeleteModal(true)}
+                          className="gap-2 border-red-500 text-red-500 hover:bg-red-50"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                          Delete
+                        </Button>
+                      </>
                     ) : (
                       <>
                         <Button variant="primary" onClick={handleSave} className="gap-2">
@@ -497,6 +524,42 @@ const UserProfile: React.FC = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* Delete Confirmation Modal */}
+      {showDeleteModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl"
+          >
+            <div className="text-center">
+              <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100 mb-4">
+                <Trash2 className="h-8 w-8 text-red-600" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Delete Account</h3>
+              <p className="text-gray-600 mb-6">
+                Are you sure you want to delete your account? This action cannot be undone and all your data will be permanently removed.
+              </p>
+              <div className="flex gap-3">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowDeleteModal(false)}
+                  className="flex-1"
+                >
+                  Cancel
+                </Button>
+                <Button
+                  onClick={handleDeleteAccount}
+                  className="flex-1 bg-red-600 hover:bg-red-700 text-white"
+                >
+                  Delete Account
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
       <Footer />
     </div>
