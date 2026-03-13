@@ -3,6 +3,7 @@ import { Chat } from '../common/Chat';
 import { bookingService } from '../../services/chatService';
 import { LoadingSpinner } from '../common/LoadingSpinner';
 import { Alert } from '../common/Alert';
+import PaymentModal from '../common/PaymentModal';
 
 interface Booking {
   _id: string;
@@ -32,24 +33,17 @@ interface ActiveBookingProps {
 
 export const UserActiveBooking: React.FC<ActiveBookingProps> = ({ booking, onUpdate }) => {
   const [showChat, setShowChat] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [showReview, setShowReview] = useState(false);
   const [rating, setRating] = useState(5);
   const [feedback, setFeedback] = useState('');
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
-  const handlePayment = async (method: string) => {
-    setLoading(true);
-    try {
-      await bookingService.makePayment(booking._id, method);
-      setAlert({ type: 'success', message: 'Payment successful! Please rate your experience.' });
-      setShowReview(true);
-      onUpdate();
-    } catch (error: any) {
-      setAlert({ type: 'error', message: error.response?.data?.message || 'Payment failed' });
-    } finally {
-      setLoading(false);
-    }
+  const handlePaymentSuccess = () => {
+    setAlert({ type: 'success', message: 'Payment successful! Please rate your experience.' });
+    setShowReview(true);
+    onUpdate();
   };
 
   const handleSubmitReview = async () => {
@@ -187,22 +181,12 @@ export const UserActiveBooking: React.FC<ActiveBookingProps> = ({ booking, onUpd
               {booking.status === 'completed' && booking.paymentStatus === 'pending' && !showReview && (
                 <div className="bg-gradient-to-br from-green-50 to-blue-50 p-4 rounded-xl border-2 border-green-300">
                   <h3 className="font-bold text-gray-800 mb-3">💳 Make Payment</h3>
-                  <div className="grid grid-cols-2 gap-3">
-                    <button
-                      onClick={() => handlePayment('cash')}
-                      disabled={loading}
-                      className="py-3 px-4 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-xl font-bold hover:from-green-600 hover:to-blue-600 disabled:opacity-50 transform hover:scale-105 transition-all"
-                    >
-                      💵 Cash
-                    </button>
-                    <button
-                      onClick={() => handlePayment('online')}
-                      disabled={loading}
-                      className="py-3 px-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl font-bold hover:from-purple-600 hover:to-pink-600 disabled:opacity-50 transform hover:scale-105 transition-all"
-                    >
-                      📱 Online
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => setShowPaymentModal(true)}
+                    className="w-full py-4 bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 text-white rounded-xl font-bold text-lg hover:from-green-600 hover:via-blue-600 hover:to-purple-600 shadow-lg transform hover:scale-105 transition-all"
+                  >
+                    💳 Proceed to Payment
+                  </button>
                 </div>
               )}
 
@@ -259,6 +243,15 @@ export const UserActiveBooking: React.FC<ActiveBookingProps> = ({ booking, onUpd
             </div>
           )}
         </div>
+
+        {/* Payment Modal */}
+        {showPaymentModal && (
+          <PaymentModal
+            booking={booking}
+            onClose={() => setShowPaymentModal(false)}
+            onSuccess={handlePaymentSuccess}
+          />
+        )}
       </div>
     </div>
   );

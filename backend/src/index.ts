@@ -31,6 +31,7 @@ import payoutRoutes from './routes/payouts';
 import serviceCategoryRoutes from './routes/serviceCategories';
 import complaintRoutes from './routes/complaints';
 import accountDeletionRoutes from './routes/accountDeletion';
+import paymentRoutes from './routes/payments';
 
 // Initialize express app
 const app: Application = express();
@@ -86,6 +87,7 @@ app.use('/api/payouts', payoutRoutes);
 app.use('/api/service-categories', serviceCategoryRoutes);
 app.use('/api/complaints', complaintRoutes);
 app.use('/api/account-deletion', accountDeletionRoutes);
+app.use('/api/payments', paymentRoutes);
 
 // Health check route
 app.get('/health', (req, res) => {

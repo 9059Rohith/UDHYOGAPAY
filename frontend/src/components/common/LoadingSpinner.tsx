@@ -9,6 +9,8 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   size = 'medium',
   message
 }) => {
+  const normalizedSize = size === 'sm' ? 'small' : size === 'md' ? 'medium' : size === 'lg' ? 'large' : size;
+
   const sizeClasses = {
     small: 'h-6 w-6',
     medium: 'h-12 w-12',
@@ -18,7 +20,7 @@ export const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   return (
     <div className="flex flex-col items-center justify-center gap-4">
       <div
-        className={`animate-spin rounded-full border-b-2 border-blue-600 ${sizeClasses[size]}`}
+        className={`animate-spin rounded-full border-b-2 border-blue-600 ${sizeClasses[normalizedSize]}`}
       ></div>
       {message && <p className="text-gray-600 text-sm">{message}</p>}
     </div>

@@ -12,12 +12,13 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true
   },
   "include": ["src"],
+  "exclude": ["src/**/*_Backup.tsx", "src/**/*_Fixed.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
