@@ -1,378 +1,257 @@
+# UdhyogaPay - Hyperlocal Worker Booking Platform
 
-# Udhyoga Pay - Worker Booking Platform
+UdhyogaPay is a full-stack web platform for connecting users with nearby skilled workers such as plumbers, electricians, carpenters, cleaners, and painters. It supports worker discovery, booking lifecycle management, OTP-based job start, real-time updates, ratings, KYC workflow, and admin monitoring.
 
-A production-ready full-stack web application for booking professional workers (plumbers, electricians, carpenters, etc.) with real-time location tracking, geospatial search, and instant notifications.
+## Student Details
 
+- Name: Rohith Kumar Dhamagatla
+- Roll No: CB.SC.U4CSE23018N
 
-CB.SC.U4CSE23018=>Rohith kumar Dhamagatla
+## Project Status
 
-## 🚀 Features
+This repository currently contains:
 
-### User Portal
-- 🗺️ **Interactive Map** - Find workers on OpenStreetMap with custom markers
-- 📍 **Geolocation** - Automatic location detection and geocoding
-- 🔍 **Smart Search** - Find workers by profession within 5km radius
-- 📊 **Multi-factor Ranking** - Workers ranked by distance, rating, and experience
-- 🚗 **Route Display** - See exact route and ETA using OSRM
-- 🔔 **Real-time Updates** - Instant booking status notifications
-- 🔐 **OTP Verification** - Secure job start verification
+- `frontend/` - React + TypeScript web app
+- `backend/` - Node.js + Express + TypeScript API
+- `ai_engine/` - Worker ranking microservice
+- `shared/` - Shared service/type utilities
+- `submission/codefile_db/` - Database schemas, seeders, migration index script
 
-### Worker Portal
-- 🟢 **Online/Offline Toggle** - Control availability with one click
-- 📱 **GPS Tracking** - Automatic location updates every 30 seconds
-- ⏱️ **30-Second Window** - Accept/reject bookings with countdown timer
-- 📄 **KYC Upload** - Aadhar and Police Verification documents
-- 💰 **Earnings Dashboard** - Track jobs, ratings, and statistics
-- 🔔 **Push Notifications** - Browser notifications for new bookings
+## Tech Stack
 
-### Admin Dashboard
-- 📊 **Analytics** - Users, workers, bookings, revenue metrics
-- ✅ **Worker Verification** - Approve/reject KYC documents
-- 🗺️ **Live Map** - Real-time view of all active workers
-- 📈 **Distribution Charts** - Worker distribution by profession
-- 📋 **Booking Management** - View and filter all platform bookings
+- Frontend: React, TypeScript, Vite, Tailwind CSS, Leaflet.js, Socket.io client, Axios
+- Backend: Node.js, Express, TypeScript, Socket.io, JWT, bcrypt, Joi, Helmet, rate limit
+- Database: MongoDB Atlas + Mongoose (with geospatial indexes)
+- Media: Cloudinary
+- Maps and Geo: Nominatim (geocoding), OSRM (routing), Haversine fallback
+- Payments: Razorpay integration structure (requires valid keys for live usage)
 
-## 🛠️ Tech Stack
+## Folder Structure
 
-### Frontend
-- **Framework**: React 19 + TypeScript
-- **Routing**: React Router v6
-- **Styling**: TailwindCSS 4
-- **Maps**: Leaflet.js + React-Leaflet
-- **Map Tiles**: OpenStreetMap (free)
-- **Real-time**: Socket.io Client
-- **HTTP**: Axios
-- **State**: Context API + Zustand (optional)
-- **Forms**: React Hook Form + Zod
+```text
+udhyogapay/
+  backend/
+    src/
+      config/
+      controllers/
+      middleware/
+      models/
+      routes/
+      services/
+      utils/
+  frontend/
+    src/
+      components/
+      context/
+      pages/
+      services/
+      types/
+      utils/
+  ai_engine/
+    src/
+      algorithms/
+      types/
+      utils/
+  shared/
+  submission/
+    codefile_db/
+      db_config.ts
+      schemas/
+      seeds/
+      migrations/
+```
 
-### Backend
-- **Runtime**: Node.js + Express
-- **Language**: TypeScript
-- **Database**: MongoDB with Mongoose
-- **Authentication**: JWT with httpOnly cookies
-- **Real-time**: Socket.io Server
-- **File Upload**: Multer + Cloudinary
-- **Geocoding**: Nominatim (OpenStreetMap)
-- **Routing**: OSRM / OpenRouteService
-- **Validation**: Joi
-- **Security**: Helmet.js, Rate Limiting, bcrypt
+## Core Features
 
-### APIs & Services
-- **OpenStreetMap Nominatim** - Free geocoding
-- **OSRM** - Free route calculation
-- **Cloudinary** - Document storage
-- **MongoDB Atlas** - Database hosting (free tier)
-- **Browser Geolocation API** - User/worker location
+- Secure registration/login with JWT auth
+- Role-based access: User, Worker, Admin
+- Worker discovery using geospatial queries (`2dsphere`)
+- Matching score based on:
+  - Distance: 50%
+  - Rating: 30%
+  - Experience: 20%
+- Real-time booking updates with Socket.io
+- OTP verification before job start
+- Booking lifecycle: pending -> accepted/rejected -> started -> completed/cancelled
+- Ratings and feedback workflow
+- Worker KYC approval flow
+- Admin analytics and moderation endpoints
 
-## 📦 Installation
+## Prerequisites
 
-### Prerequisites
 - Node.js 18+
-- MongoDB 6+
-- npm or yarn
+- npm 9+
+- MongoDB Atlas URI (or local MongoDB)
+- Cloudinary account (for uploads)
 
-### Backend Setup
+## Environment Setup
 
-```bash
-cd backend
+Create `.env` files for each service.
 
-# Install dependencies
-npm install
+### Backend (`backend/.env`)
 
-# Create .env file
-cp .env.example .env
-
-# Edit .env with your credentials
-# Required: MONGODB_URI, JWT_SECRET, CLOUDINARY credentials
-
-# Start MongoDB
-mongod
-
-# Run development server
-npm run dev
-
-# Server runs on http://localhost:5000
-```
-
-### Frontend Setup
-
-```bash
-cd frontend
-
-# Install dependencies
-npm install
-
-# Create .env file
-cp .env.example .env
-
-# Edit .env
-# VITE_API_URL=http://localhost:5000
-# VITE_SOCKET_URL=http://localhost:5000
-
-# Run development server
-npm run dev
-
-# App runs on http://localhost:5173
-```
-
-## 🗄️ Database Setup
-
-MongoDB will auto-create collections and indexes. No manual setup required.
-
-### Collections
-- `users` - User accounts (all roles)
-- `workers` - Worker profiles and KYC docs
-- `bookings` - Booking records with timeline
-
-### Indexes (Auto-created)
-- Geospatial 2dsphere index on worker locations
-- Unique indexes on email and phone
-- Compound indexes for optimized queries
-
-## 🔑 Environment Variables
-
-### Backend (.env)
 ```env
 NODE_ENV=development
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/udhyogapay
-JWT_SECRET=your-super-secret-key
+MONGODB_URI=mongodb+srv://<user>:<pass>@<cluster>/udhyogapay
+JWT_SECRET=replace_with_secure_secret
 JWT_EXPIRE=7d
+FRONTEND_URL=http://localhost:5173
 
-# Cloudinary (sign up at cloudinary.com)
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 
-# Admin
-ADMIN_EMAIL=rajuchaswik@gmail.com
+RATE_LIMIT_WINDOW_MS=900000
+RATE_LIMIT_MAX_REQUESTS=100
 
-# CORS
-FRONTEND_URL=http://localhost:5173
+# Optional
+RAZORPAY_KEY_ID=rzp_test_xxxxx
+RAZORPAY_KEY_SECRET=xxxxxxxx
+EMAIL_USER=your_email
+EMAIL_PASSWORD=app_password
 ```
 
-### Frontend (.env)
+### Frontend (`frontend/.env`)
+
 ```env
 VITE_API_URL=http://localhost:5000
 VITE_SOCKET_URL=http://localhost:5000
+VITE_RAZORPAY_KEY_ID=rzp_test_xxxxx
 ```
 
-## 🚀 Usage
+### AI Engine (`ai_engine/.env`)
 
-### 1. Register as User or Worker
-- Go to `/register`
-- Choose role: User or Worker
-- Fill in details and submit
-
-### 2. User Flow
-1. Login → Redirected to `/user/home`
-2. Allow location access
-3. Select profession (plumber, electrician, etc.)
-4. View workers on map with ratings and distance
-5. Click on a worker marker to see details
-6. Click "Book Now" to create booking
-7. Receive OTP to share with worker
-8. Track booking status in real-time
-
-### 3. Worker Flow
-1. Login → Redirected to `/worker/dashboard`
-2. Complete KYC verification (if first time)
-3. Wait for admin approval
-4. Toggle "Online" to receive bookings
-5. Accept/Reject bookings within 30 seconds
-6. Enter user's OTP to start job
-7. Complete job when done
-
-### 4. Admin Flow
-1. Login with admin email (rajuchaswik@gmail.com)
-2. View platform analytics
-3. Approve/reject pending worker verifications
-4. View live map of active workers
-5. Monitor all bookings
-
-## 📡 API Documentation
-
-### Authentication
-- `POST /api/auth/register` - Register user/worker
-- `POST /api/auth/login` - Login
-- `POST /api/auth/logout` - Logout
-- `GET /api/auth/verify-token` - Verify JWT
-
-### Workers
-- `POST /api/workers/kyc` - Upload KYC documents
-- `PATCH /api/workers/toggle-online` - Toggle availability
-- `PATCH /api/workers/location` - Update GPS location
-- `GET /api/workers/profile` - Get worker profile
-
-### Users
-- `POST /api/users/workers/nearby` - Find nearby workers
-- `POST /api/users/geocode` - Address to coordinates
-- `POST /api/users/reverse-geocode` - Coordinates to address
-- `POST /api/users/calculate-distance` - Route distance
-
-### Bookings
-- `POST /api/bookings/create` - Create booking
-- `PATCH /api/bookings/:id/accept` - Accept (worker)
-- `PATCH /api/bookings/:id/reject` - Reject (worker)
-- `POST /api/bookings/:id/verify-otp` - Start job
-- `PATCH /api/bookings/:id/complete` - Complete job
-- `PATCH /api/bookings/:id/rate` - Rate worker
-- `GET /api/bookings/history` - User history
-- `GET /api/bookings/worker/history` - Worker history
-
-### Admin
-- `GET /api/admin/workers/pending` - Pending verifications
-- `PATCH /api/admin/workers/:id/verify` - Verify worker
-- `GET /api/admin/workers/active` - Live workers
-- `GET /api/admin/analytics` - Platform analytics
-
-## 🗺️ Map Integration
-
-### OpenStreetMap Services (All Free!)
-
-1. **Nominatim** (Geocoding)
-   - Address → Coordinates
-   - Coordinates → Address
-   - Rate limit: 1 request/second
-   - No API key required
-
-2. **OSRM** (Routing)
-   - Calculate route distance and duration
-   - Get route geometry for map display
-   - Public demo server available
-   - Can self-host for production
-
-3. **OpenStreetMap Tiles**
-   - Free map tiles
-   - Unlimited usage
-   - Multiple styles available
-
-### Worker Ranking Algorithm
-
-```javascript
-// Multi-factor scoring (0-5 scale)
-finalScore = (
-  distanceScore * 0.5 +  // 50% weight
-  ratingScore * 0.3 +    // 30% weight
-  experienceScore * 0.2  // 20% weight
-)
-
-// Workers sorted by finalScore (highest first)
+```env
+PORT=5002
+NODE_ENV=development
 ```
 
-## 🔐 Security Features
+## Local Development
 
-- ✅ JWT with httpOnly cookies
-- ✅ Password hashing with bcrypt (12 rounds)
-- ✅ Rate limiting (100 req/15min)
-- ✅ Input validation with Joi
-- ✅ CORS whitelist
-- ✅ Helmet.js security headers
-- ✅ MongoDB injection prevention
-- ✅ File upload validation (5MB max, PDF/JPG only)
-- ✅ Admin email verification
+Open three terminals from repository root.
 
-## 📱 Real-time Features
-
-### Socket.io Events
-
-**User Room**
-- Booking accepted
-- Booking rejected
-- Job started
-- Job completed
-
-**Worker Room**
-- New booking request
-- Location update request
-
-**Admin Room**
-- Worker location updates
-- Booking status changes
-
-## 🧪 Testing
+### 1. Backend
 
 ```bash
-# Backend tests
 cd backend
-npm test
-
-# Frontend tests
-cd frontend
-npm test
+npm install
+npm run dev
 ```
 
-### Test Strategy
-1. API endpoints with Postman
-2. Socket.io events with Socket.io Explorer
-3. Map functionality in different browsers
-4. Geolocation on mobile devices
-5. Real-time notifications
+### 2. AI Engine
 
-## 📈 Production Deployment
-
-### Backend (Railway / Render)
-1. Push code to GitHub
-2. Connect repository
-3. Add environment variables
-4. Deploy
-
-### Frontend (Vercel / Netlify)
 ```bash
-npm run build
-vercel deploy --prod
+cd ai_engine
+npm install
+npm run dev
 ```
 
-### Database (MongoDB Atlas)
-1. Create free cluster
-2. Get connection string
-3. Update MONGODB_URI
+### 3. Frontend
 
-### Cloudinary
-1. Sign up at cloudinary.com
-2. Get credentials from dashboard
-3. Update .env variables
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-## 🌍 Browser Support
+Frontend default URL: `http://localhost:5173`
 
-- Chrome/Edge ✅
-- Firefox ✅
-- Safari ✅
-- Mobile browsers ✅
+## Build Commands
 
-**Note**: HTTPS required in production for Geolocation API
+### Backend
 
-## 📊 Performance
+```bash
+cd backend
+npm run build
+npm start
+```
 
-- MongoDB geospatial indexes for fast queries
-- Socket.io for low-latency updates
-- React lazy loading for code splitting
-- Optimized map rendering
-- Debounced location updates
+### AI Engine
 
-## 🤝 Contributing
+```bash
+cd ai_engine
+npm run build
+npm start
+```
 
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit changes (`git commit -m 'Add AmazingFeature'`)
-4. Push to branch (`git push origin feature/AmazingFeature`)
-5. Open Pull Request
+### Frontend
 
-## 📄 License
+```bash
+cd frontend
+npm run lint
+npm run build
+npm run preview
+```
 
-ISC
+## Database Files in `submission/codefile_db`
 
-## 👨‍💻 Author
+This folder is prepared for DB-only submission requirements.
 
-Udhyoga Pay Development Team
+### Included files
 
-## 📞 Support
+- `db_config.ts`
+  - MongoDB connection with retry logic and pooling options
+- `schemas/user.schema.ts`
+  - Full User schema, validations, indexes, virtuals, password hashing
+- `schemas/worker.schema.ts`
+  - Worker schema with KYC fields, earnings, and `2dsphere` geospatial index
+- `schemas/booking.schema.ts`
+  - Booking schema with OTP, timeline, status enum, rating subdocument
+- `seeds/seedUsers.ts`
+  - Seeds 10 sample Indian users
+- `seeds/seedWorkers.ts`
+  - Seeds 10 workers across 5 professions
+- `seeds/seedBookings.ts`
+  - Seeds 20 bookings with varied statuses
+- `migrations/createIndexes.ts`
+  - Programmatic index creation script
 
-For issues and questions:
-- Create an issue on GitHub
-- Email: support@udhyogapay.com
+### Seed execution order
 
----
+```bash
+cd submission/codefile_db
+# Run in this order using ts-node in your configured environment:
+# 1) seedUsers.ts
+# 2) seedWorkers.ts
+# 3) seedBookings.ts
+# 4) migrations/createIndexes.ts (or before seed if preferred)
+```
 
-**Built with ❤️ using React, Node.js, and OpenStreetMap**
+## API Summary
 
+Base URL: `http://localhost:5000/api`
+
+- Auth: `/auth/register`, `/auth/login`, `/auth/logout`
+- User: worker search, geocode/reverse geocode, profile operations
+- Worker: profile, availability, location, KYC flow
+- Booking: create, accept/reject, start (OTP), complete
+- Admin: KYC verify, dashboard metrics
+
+## Deployment Notes
+
+Recommended setup:
+
+- Backend: Railway
+- AI Engine: Railway (separate service)
+- Frontend: Netlify
+- Database: MongoDB Atlas
+- Media: Cloudinary
+
+Before deployment:
+
+1. Confirm all env vars are set.
+2. Ensure MongoDB network access is open for deployment hosts.
+3. Run local build for backend/frontend/ai_engine.
+4. Verify CORS origin values match deployed frontend domain.
+
+## Troubleshooting Quick Notes
+
+- If login fails with 401, verify JWT secret consistency and cookie settings.
+- If map shows no workers, confirm worker `isOnline=true`, `isVerified=true`, and valid `currentLocation.coordinates`.
+- If uploads fail, verify Cloudinary credentials.
+- If booking updates are not real-time, verify Socket.io URL and CORS settings.
+
+## License
+
+Academic project repository for demonstration and evaluation.
