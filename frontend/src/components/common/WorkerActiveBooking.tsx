@@ -1,3 +1,4 @@
+// UI component: renders and manages the WorkerActiveBooking feature block.
 import React, { useState } from 'react';
 import { Chat } from '../common/Chat';
 import { bookingService } from '../../services/chatService';

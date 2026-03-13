@@ -1,3 +1,4 @@
+// UI component: renders and manages the Skeleton feature block.
 import React from 'react';
 
 export const Skeleton: React.FC<{ className?: string }> = ({ className = '' }) => {

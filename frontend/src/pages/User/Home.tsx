@@ -1,3 +1,4 @@
+// Page feature: drives the Home screen and its user interactions.
 import React, { useState, useEffect } from 'react';
 import { LeafletMap } from '../../components/map/LeafletMap';
 import { Navbar } from '../../components/common/Navbar';

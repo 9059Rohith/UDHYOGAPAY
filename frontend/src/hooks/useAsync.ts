@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useAsync state and behavior.
 import { useState, useCallback, useEffect } from 'react';
 
 export interface AsyncState<T> {

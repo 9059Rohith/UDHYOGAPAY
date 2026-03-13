@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useLocalStorage state and behavior.
 import { useState } from 'react';
 
 export const useLocalStorage = <T>(key: string, initialValue: T) => {

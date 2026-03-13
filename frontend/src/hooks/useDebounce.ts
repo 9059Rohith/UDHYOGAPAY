@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useDebounce state and behavior.
 import { useState, useEffect } from 'react';
 import { debounce } from '../utils/helpers';
 

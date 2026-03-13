@@ -1,3 +1,4 @@
+// UI component: renders and manages the Input feature block.
 import React, { forwardRef, InputHTMLAttributes } from 'react';
 import { clsx } from 'clsx';
 

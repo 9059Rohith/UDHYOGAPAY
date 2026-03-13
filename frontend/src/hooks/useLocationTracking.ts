@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useLocationTracking state and behavior.
 import { useEffect, useRef } from 'react';
 import socketService from '../services/socketService';
 import { locationService } from '../services/locationService';

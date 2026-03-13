@@ -1,3 +1,4 @@
+// UI component: renders and manages the ReviewForm feature block.
 import React, { useState } from 'react';
 import {
   Dialog,

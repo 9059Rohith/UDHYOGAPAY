@@ -1,3 +1,4 @@
+// UI component: renders and manages the Alert feature block.
 import React from 'react';
 import { AlertCircle, CheckCircle, Info, XCircle } from 'lucide-react';
 import { cn } from '../../utils/cn';

@@ -1,3 +1,4 @@
+// UI component: renders and manages the PaymentModal feature block.
 import React, { useState } from 'react';
 import paymentService from '../../services/paymentService';
 import toast from 'react-hot-toast';

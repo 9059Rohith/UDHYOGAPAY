@@ -1,3 +1,4 @@
+// Utility module: contains helper logic for tokenManager operations.
 import { STORAGE_KEYS } from './constants';
 
 /**

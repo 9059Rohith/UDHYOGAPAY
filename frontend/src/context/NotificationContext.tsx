@@ -1,3 +1,4 @@
+// Context module: provides shared NotificationContext state and actions across the app.
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Notification } from '../types';
 import { socketService } from '../services';

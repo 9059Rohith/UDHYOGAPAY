@@ -1,3 +1,4 @@
+// Service layer: handles workerApplicationService API calls and request logic.
 import api from './api';
 
 export interface WorkerApplicationData {

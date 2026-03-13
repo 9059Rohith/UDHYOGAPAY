@@ -1,3 +1,4 @@
+// UI component: renders and manages the WorkerListPanel feature block.
 import React from 'react';
 import { Star, MapPin } from 'lucide-react';
 import { LoadingSpinner } from '../common/LoadingSpinner';

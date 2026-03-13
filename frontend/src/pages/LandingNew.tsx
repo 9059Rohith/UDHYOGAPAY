@@ -1,3 +1,4 @@
+// Page feature: drives the LandingNew screen and its user interactions.
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';

@@ -1,3 +1,4 @@
+// UI component: renders and manages the Input feature block.
 import React, { InputHTMLAttributes, forwardRef } from 'react';
 import { cn } from '../../utils/cn';
 

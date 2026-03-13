@@ -1,3 +1,4 @@
+// Page feature: drives the Onboarding screen and its user interactions.
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';

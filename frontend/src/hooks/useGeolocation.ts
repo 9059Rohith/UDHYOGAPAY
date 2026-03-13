@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useGeolocation state and behavior.
 import { useState, useEffect } from 'react';
 import { locationService } from '../services/locationService';
 

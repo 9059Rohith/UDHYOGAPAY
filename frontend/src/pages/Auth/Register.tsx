@@ -1,3 +1,4 @@
+// Page feature: drives the Register screen and its user interactions.
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';

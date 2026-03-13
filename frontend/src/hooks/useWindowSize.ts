@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useWindowSize state and behavior.
 import { useState, useEffect } from 'react';
 
 export const useWindowSize = () => {

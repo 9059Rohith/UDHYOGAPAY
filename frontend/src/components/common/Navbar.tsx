@@ -1,3 +1,4 @@
+// UI component: renders and manages the Navbar feature block.
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';

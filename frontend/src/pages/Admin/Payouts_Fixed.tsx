@@ -1,3 +1,4 @@
+// Page feature: drives the Payouts_Fixed screen and its user interactions.
 import React, { useState, useEffect } from 'react';
 import {
   Box,

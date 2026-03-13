@@ -1,3 +1,4 @@
+// Service layer: handles matchingService API calls and request logic.
 import api from './api';
 
 interface Location {

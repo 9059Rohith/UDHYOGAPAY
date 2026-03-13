@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useToggle state and behavior.
 import { useState, useCallback } from 'react';
 
 export const useToggle = (initialValue: boolean = false): [boolean, () => void, (value: boolean) => void] => {

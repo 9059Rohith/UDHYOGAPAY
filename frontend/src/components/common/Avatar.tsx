@@ -1,3 +1,4 @@
+// UI component: renders and manages the Avatar feature block.
 import React from 'react';
 import { User as UserIcon } from 'lucide-react';
 import { cn } from '../../utils/cn';

@@ -1,3 +1,4 @@
+// Page feature: drives the DashboardNew screen and its user interactions.
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';

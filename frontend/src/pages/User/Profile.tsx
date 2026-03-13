@@ -1,3 +1,4 @@
+// Page feature: drives the Profile screen and its user interactions.
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {

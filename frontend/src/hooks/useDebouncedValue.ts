@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useDebouncedValue state and behavior.
 import { useEffect, useRef, useState } from 'react';
 
 export function useDebouncedValue<T>(value: T, delay: number): T {

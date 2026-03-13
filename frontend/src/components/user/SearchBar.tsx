@@ -1,3 +1,4 @@
+// UI component: renders and manages the SearchBar feature block.
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { Select } from '../common/Select';

@@ -1,3 +1,4 @@
+// UI component: renders and manages the CommandPalette feature block.
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';

@@ -1,3 +1,4 @@
+// Page feature: drives the WorkerDashboard screen and its user interactions.
 import React, { useState, useEffect } from 'react';
 import { useLocationTracking } from '../../hooks/useLocationTracking';
 import { Navbar } from '../../components/common/Navbar';

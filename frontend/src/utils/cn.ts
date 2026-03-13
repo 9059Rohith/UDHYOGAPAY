@@ -1,3 +1,4 @@
+// Utility module: contains helper logic for cn operations.
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 

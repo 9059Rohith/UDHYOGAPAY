@@ -1,3 +1,4 @@
+// Context module: provides shared ToastContext state and actions across the app.
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
 import { ToastOptions } from '../types';
 

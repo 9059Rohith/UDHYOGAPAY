@@ -1,3 +1,4 @@
+// Page feature: drives the AdminPanel screen and its user interactions.
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 import { Worker } from '../../types/worker';

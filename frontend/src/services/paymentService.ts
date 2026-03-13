@@ -1,3 +1,4 @@
+// Service layer: handles paymentService API calls and request logic.
 import api from './api';
 
 export interface CreateOrderResponse {

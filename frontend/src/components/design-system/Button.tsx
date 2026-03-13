@@ -1,3 +1,4 @@
+// UI component: renders and manages the Button feature block.
 import React, { forwardRef, ButtonHTMLAttributes } from 'react';
 import { clsx } from 'clsx';
 import { Loader2 } from 'lucide-react';

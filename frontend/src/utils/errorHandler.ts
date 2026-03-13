@@ -1,3 +1,4 @@
+// Utility module: contains helper logic for errorHandler operations.
 import type { ApiError } from '../types';
 
 /**
