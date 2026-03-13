@@ -1,3 +1,4 @@
+// Backend module: User
 import mongoose, { Document, Schema } from 'mongoose';
 import bcrypt from 'bcrypt';
 

@@ -1,3 +1,4 @@
+// Backend module: validators
 import Joi from 'joi';
 
 export const validateRegister = (data: any) => {

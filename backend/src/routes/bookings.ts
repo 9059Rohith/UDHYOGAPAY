@@ -1,3 +1,4 @@
+// Backend module: bookings
 import express from 'express';
 import {
   createBooking,

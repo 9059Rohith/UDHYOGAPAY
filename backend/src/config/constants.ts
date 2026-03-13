@@ -1,3 +1,4 @@
+// Backend module: constants
 export const CONSTANTS = {
   PROFESSIONS: ['plumber', 'electrician', 'carpenter', 'painter', 'cleaner'],
   

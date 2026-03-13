@@ -1,3 +1,4 @@
+// Backend module: emailService
 import nodemailer from 'nodemailer';
 
 // Create reusable transporter

@@ -1,3 +1,4 @@
+// Backend module: Worker
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IWorker extends Document {
