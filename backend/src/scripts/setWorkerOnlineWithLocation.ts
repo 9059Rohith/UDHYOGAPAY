@@ -1,4 +1,4 @@
-// Backend scripts logic for setWorkerOnlineWithLocation operations
+// Backend comment: setWorkerOnlineWithLocation
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 

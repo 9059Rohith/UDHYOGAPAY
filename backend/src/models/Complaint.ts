@@ -1,4 +1,4 @@
-// Backend models logic for Complaint operations
+// Backend comment: Complaint
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IComplaint extends Document {

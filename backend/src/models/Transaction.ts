@@ -1,4 +1,4 @@
-// Backend models logic for Transaction operations
+// Backend comment: Transaction
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface ITransaction extends Document {

@@ -1,4 +1,4 @@
-// Backend routes logic for serviceCategories operations
+// Backend comment: serviceCategories
 import express from 'express';
 import { protect } from '../middleware/auth';
 import { isAdmin } from '../middleware/roleCheck';

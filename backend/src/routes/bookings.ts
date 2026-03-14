@@ -1,4 +1,4 @@
-// Backend routes logic for bookings operations
+// Backend comment: bookings
 import express from 'express';
 import {
   createBooking,

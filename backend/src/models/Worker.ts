@@ -1,4 +1,4 @@
-// Backend models logic for Worker operations
+// Backend comment: Worker
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IWorker extends Document {

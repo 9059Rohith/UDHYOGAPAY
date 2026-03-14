@@ -1,4 +1,4 @@
-// Backend config logic for cloudinary operations
+// Backend comment: cloudinary
 import { v2 as cloudinary } from 'cloudinary';
 
 export const configureCloudinary = (): void => {

@@ -1,4 +1,4 @@
-// Backend controllers logic for accountDeletionController operations
+// Backend comment: accountDeletionController
 import { Response } from 'express';
 import User from '../models/User';
 import Worker from '../models/Worker';

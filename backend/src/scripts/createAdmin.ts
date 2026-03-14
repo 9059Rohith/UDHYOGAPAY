@@ -1,4 +1,4 @@
-// Backend scripts logic for createAdmin operations
+// Backend comment: createAdmin
 import mongoose from 'mongoose';
 import User from '../models/User';
 import dotenv from 'dotenv';

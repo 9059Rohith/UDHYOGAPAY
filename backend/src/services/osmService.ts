@@ -1,4 +1,4 @@
-// Backend services logic for osmService operations
+// Backend comment: osmService
 import axios from 'axios';
 import { CONSTANTS } from '../config/constants';
 

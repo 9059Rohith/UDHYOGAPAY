@@ -1,4 +1,4 @@
-// Backend services logic for razorpayService operations
+// Backend comment: razorpayService
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
 

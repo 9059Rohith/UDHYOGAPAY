@@ -1,4 +1,4 @@
-// Backend scripts logic for seedAdminData operations
+// Backend comment: seedAdminData
 import mongoose from 'mongoose';
 import Review from '../models/Review';
 import Payout from '../models/Payout';

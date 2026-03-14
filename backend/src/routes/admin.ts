@@ -1,4 +1,4 @@
-// Backend routes logic for admin operations
+// Backend comment: admin
 import express from 'express';
 import {
   getPendingWorkers,

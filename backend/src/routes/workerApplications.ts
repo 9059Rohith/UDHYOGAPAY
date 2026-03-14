@@ -1,4 +1,4 @@
-// Backend routes logic for workerApplications operations
+// Backend comment: workerApplications
 import express from 'express';
 import {
   submitWorkerApplication,

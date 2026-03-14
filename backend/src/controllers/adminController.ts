@@ -1,4 +1,4 @@
-// Backend controllers logic for adminController operations
+// Backend comment: adminController
 import { Response } from 'express';
 import Worker from '../models/Worker';
 import Booking from '../models/Booking';

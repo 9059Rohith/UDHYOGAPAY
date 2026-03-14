@@ -1,4 +1,4 @@
-// Backend controllers logic for workerApplicationController operations
+// Backend comment: workerApplicationController
 import { Request, Response } from 'express';
 import WorkerApplication from '../models/WorkerApplication';
 import User from '../models/User';

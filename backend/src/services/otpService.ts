@@ -1,4 +1,4 @@
-// Backend services logic for otpService operations
+// Backend comment: otpService
 /**
  * Generate a 4-digit OTP
  */

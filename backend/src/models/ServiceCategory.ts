@@ -1,4 +1,4 @@
-// Backend models logic for ServiceCategory operations
+// Backend comment: ServiceCategory
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IServiceCategory extends Document {
