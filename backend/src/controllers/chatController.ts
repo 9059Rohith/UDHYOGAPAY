@@ -1,4 +1,4 @@
-// Backend module: chatController
+// Backend controllers logic for chatController operations
 import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
 import Message from '../models/Message';

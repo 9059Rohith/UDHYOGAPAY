@@ -1,4 +1,4 @@
-// Backend module: accountDeletion
+// Backend routes logic for accountDeletion operations
 import express from 'express';
 import { protect } from '../middleware/auth';
 import { isAdmin } from '../middleware/roleCheck';

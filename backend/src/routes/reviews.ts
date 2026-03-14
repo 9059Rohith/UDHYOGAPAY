@@ -1,4 +1,4 @@
-// Backend module: reviews
+// Backend routes logic for reviews operations
 import express from 'express';
 import { protect } from '../middleware/auth';
 import {

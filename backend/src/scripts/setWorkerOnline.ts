@@ -1,4 +1,4 @@
-// Backend module: setWorkerOnline
+// Backend scripts logic for setWorkerOnline operations
 import mongoose from 'mongoose';
 import Worker from '../models/Worker';
 import User from '../models/User';

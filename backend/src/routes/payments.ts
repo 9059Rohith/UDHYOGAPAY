@@ -1,4 +1,4 @@
-// Backend module: payments
+// Backend routes logic for payments operations
 import express from 'express';
 import { protect } from '../middleware/auth';
 import { isUser, isAdmin } from '../middleware/roleCheck';

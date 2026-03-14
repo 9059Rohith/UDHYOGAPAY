@@ -1,4 +1,4 @@
-// Backend module: chat
+// Backend routes logic for chat operations
 import express from 'express';
 import { protect } from '../middleware/auth';
 import { getMessages, sendMessage, markAsRead } from '../controllers/chatController';

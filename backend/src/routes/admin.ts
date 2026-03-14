@@ -1,4 +1,4 @@
-// Backend module: admin
+// Backend routes logic for admin operations
 import express from 'express';
 import {
   getPendingWorkers,

@@ -1,4 +1,4 @@
-// Backend module: userController
+// Backend controllers logic for userController operations
 import { Response } from 'express';
 import Worker from '../models/Worker';
 import { AuthRequest } from '../middleware/auth';

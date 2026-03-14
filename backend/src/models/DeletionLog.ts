@@ -1,4 +1,4 @@
-// Backend module: DeletionLog
+// Backend models logic for DeletionLog operations
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IDeletionLog extends Document {

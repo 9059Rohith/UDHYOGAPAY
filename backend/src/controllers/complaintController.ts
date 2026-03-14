@@ -1,4 +1,4 @@
-// Backend module: complaintController
+// Backend controllers logic for complaintController operations
 import { Response } from 'express';
 import Complaint from '../models/Complaint';
 import Booking from '../models/Booking';

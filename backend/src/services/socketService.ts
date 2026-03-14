@@ -1,4 +1,4 @@
-// Backend module: socketService
+// Backend services logic for socketService operations
 import { Server } from 'socket.io';
 import { Server as HTTPServer } from 'http';
 import Worker from '../models/Worker';

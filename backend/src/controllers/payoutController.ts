@@ -1,4 +1,4 @@
-// Backend module: payoutController
+// Backend controllers logic for payoutController operations
 import { Response } from 'express';
 import Payout from '../models/Payout';
 import Booking from '../models/Booking';

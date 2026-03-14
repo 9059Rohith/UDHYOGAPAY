@@ -1,4 +1,4 @@
-// Backend module: workerApplications
+// Backend routes logic for workerApplications operations
 import express from 'express';
 import {
   submitWorkerApplication,

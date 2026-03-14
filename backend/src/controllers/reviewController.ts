@@ -1,4 +1,4 @@
-// Backend module: reviewController
+// Backend controllers logic for reviewController operations
 import { Response } from 'express';
 import Review from '../models/Review';
 import Booking from '../models/Booking';

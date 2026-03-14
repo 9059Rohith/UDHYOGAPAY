@@ -1,4 +1,4 @@
-// Backend module: WorkerApplication
+// Backend models logic for WorkerApplication operations
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IWorkerApplication extends Document {

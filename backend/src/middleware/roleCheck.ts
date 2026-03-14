@@ -1,4 +1,4 @@
-// Backend module: roleCheck
+// Backend middleware logic for roleCheck operations
 import { Response, NextFunction } from 'express';
 import { AuthRequest } from './auth';
 

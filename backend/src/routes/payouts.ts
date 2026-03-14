@@ -1,4 +1,4 @@
-// Backend module: payouts
+// Backend routes logic for payouts operations
 import express from 'express';
 import { protect } from '../middleware/auth';
 import { isAdmin } from '../middleware/roleCheck';

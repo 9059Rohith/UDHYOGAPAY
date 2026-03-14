@@ -1,4 +1,4 @@
-// Backend module: auth
+// Backend routes logic for auth operations
 import express from 'express';
 import { register, login, logout, verifyToken, adminResetPassword, forgotPassword, resetPassword } from '../controllers/authController';
 import { protect } from '../middleware/auth';

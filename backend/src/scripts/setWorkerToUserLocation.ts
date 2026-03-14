@@ -1,4 +1,4 @@
-// Backend module: setWorkerToUserLocation
+// Backend scripts logic for setWorkerToUserLocation operations
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 

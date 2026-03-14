@@ -1,4 +1,4 @@
-// Backend module: createTestData
+// Backend scripts logic for createTestData operations
 import mongoose from 'mongoose';
 import User from '../models/User';
 import Worker from '../models/Worker';

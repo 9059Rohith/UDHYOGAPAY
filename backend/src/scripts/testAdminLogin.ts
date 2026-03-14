@@ -1,4 +1,4 @@
-// Backend module: testAdminLogin
+// Backend scripts logic for testAdminLogin operations
 import mongoose from 'mongoose';
 import User from '../models/User';
 import dotenv from 'dotenv';

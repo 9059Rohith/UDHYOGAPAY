@@ -1,4 +1,4 @@
-// Backend module: resetWorkerStatus
+// Backend scripts logic for resetWorkerStatus operations
 import mongoose from 'mongoose';
 import Worker from '../models/Worker';
 import dotenv from 'dotenv';

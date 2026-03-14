@@ -1,4 +1,4 @@
-// Backend module: otpService
+// Backend services logic for otpService operations
 /**
  * Generate a 4-digit OTP
  */

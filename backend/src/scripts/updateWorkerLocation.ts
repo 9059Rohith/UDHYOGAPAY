@@ -1,4 +1,4 @@
-// Backend module: updateWorkerLocation
+// Backend scripts logic for updateWorkerLocation operations
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import readline from 'readline';

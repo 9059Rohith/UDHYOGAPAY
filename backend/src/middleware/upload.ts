@@ -1,4 +1,4 @@
-// Backend module: upload
+// Backend middleware logic for upload operations
 import multer from 'multer';
 import path from 'path';
 

@@ -1,4 +1,4 @@
-// Backend module: Review
+// Backend models logic for Review operations
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IReview extends Document {

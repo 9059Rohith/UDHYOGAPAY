@@ -1,4 +1,4 @@
-// Backend module: Message
+// Backend models logic for Message operations
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IMessage extends Document {

@@ -1,4 +1,4 @@
-// Backend module: database
+// Backend config logic for database operations
 import mongoose from 'mongoose';
 
 export const connectDatabase = async (): Promise<void> => {

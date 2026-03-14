@@ -1,4 +1,4 @@
-// Backend module: workers
+// Backend routes logic for workers operations
 import express from 'express';
 import {
   uploadKYC,

@@ -1,4 +1,4 @@
-// Backend module: serviceCategoryController
+// Backend controllers logic for serviceCategoryController operations
 import { Response } from 'express';
 import ServiceCategory from '../models/ServiceCategory';
 import { AuthRequest } from '../middleware/auth';

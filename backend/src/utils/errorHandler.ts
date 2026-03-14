@@ -1,4 +1,4 @@
-// Backend module: errorHandler
+// Backend utils logic for errorHandler operations
 import { Request, Response, NextFunction } from 'express';
 
 export class ErrorHandler extends Error {

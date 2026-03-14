@@ -1,4 +1,4 @@
-// Backend module: bookingController
+// Backend controllers logic for bookingController operations
 import { Response } from 'express';
 import Booking from '../models/Booking';
 import Worker from '../models/Worker';

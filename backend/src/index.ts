@@ -1,4 +1,4 @@
-// Backend module: index
+// Backend src logic for index operations
 import express, { Application } from 'express';
 import http from 'http';
 import dotenv from 'dotenv';

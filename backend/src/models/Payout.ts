@@ -1,4 +1,4 @@
-// Backend module: Payout
+// Backend models logic for Payout operations
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IPayout extends Document {

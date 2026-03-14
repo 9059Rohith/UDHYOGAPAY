@@ -1,4 +1,4 @@
-// Backend module: razorpayService
+// Backend services logic for razorpayService operations
 import Razorpay from 'razorpay';
 import crypto from 'crypto';
 

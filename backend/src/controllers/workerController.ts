@@ -1,4 +1,4 @@
-// Backend module: workerController
+// Backend controllers logic for workerController operations
 import { Response } from 'express';
 import Worker from '../models/Worker';
 import User from '../models/User';

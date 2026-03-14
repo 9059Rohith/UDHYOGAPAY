@@ -1,4 +1,4 @@
-// Backend module: User
+// Backend models logic for User operations
 import mongoose, { Document, Schema } from 'mongoose';
 import bcrypt from 'bcrypt';
 

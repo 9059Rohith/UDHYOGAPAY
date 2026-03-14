@@ -1,4 +1,4 @@
-// Backend module: users
+// Backend routes logic for users operations
 import express from 'express';
 import {
   findNearbyWorkers,

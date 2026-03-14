@@ -1,4 +1,4 @@
-// Backend module: Booking
+// Backend models logic for Booking operations
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IBooking extends Document {
