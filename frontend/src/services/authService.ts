@@ -1,3 +1,4 @@
+// Service layer: handles authService API calls and request logic.
 import api from './api';
 import type { ApiResponse, LoginCredentials, RegisterData, AuthResponse } from '../types';
 

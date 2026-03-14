@@ -1,3 +1,4 @@
+// UI component: renders and manages the Pagination feature block.
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '../../utils/cn';

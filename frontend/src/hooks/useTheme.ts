@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useTheme state and behavior.
 import { useState, useEffect } from 'react';
 
 export type Theme = 'light' | 'dark';

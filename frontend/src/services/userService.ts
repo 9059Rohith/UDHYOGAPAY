@@ -1,3 +1,4 @@
+// Service layer: handles userService API calls and request logic.
 import api from './api';
 import type { ApiResponse, User, UserProfile } from '../types';
 

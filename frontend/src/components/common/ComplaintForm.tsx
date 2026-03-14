@@ -1,3 +1,4 @@
+// UI component: renders and manages the ComplaintForm feature block.
 import React, { useState, useEffect } from 'react';
 import {
   Dialog,

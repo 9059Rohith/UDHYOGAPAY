@@ -1,3 +1,4 @@
+// Service layer: handles bookingService API calls and request logic.
 import api from './api';
 import type { ApiResponse, Booking, BookingRequest, BookingStats, PaginatedResponse } from '../types';
 

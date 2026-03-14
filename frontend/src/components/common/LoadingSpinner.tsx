@@ -1,3 +1,4 @@
+// UI component: renders and manages the LoadingSpinner feature block.
 import React from 'react';
 
 interface LoadingSpinnerProps {

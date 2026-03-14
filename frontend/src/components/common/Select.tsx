@@ -1,3 +1,4 @@
+// UI component: renders and manages the Select feature block.
 import { SelectHTMLAttributes, forwardRef } from 'react';
 import { cn } from '../../utils/cn';
 

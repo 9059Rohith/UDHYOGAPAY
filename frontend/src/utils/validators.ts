@@ -1,3 +1,4 @@
+// Utility module: contains helper logic for validators operations.
 import { PATTERNS } from './constants';
 
 /**

@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useAuth state and behavior.
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 

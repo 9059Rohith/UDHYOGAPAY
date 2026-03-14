@@ -1,3 +1,4 @@
+// Page feature: drives the ComplaintsManagement screen and its user interactions.
 import React, { useState, useEffect } from 'react';
 import {
   Box,

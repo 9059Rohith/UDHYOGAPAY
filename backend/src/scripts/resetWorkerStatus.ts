@@ -1,3 +1,4 @@
+// Backend comment: resetWorkerStatus
 import mongoose from 'mongoose';
 import Worker from '../models/Worker';
 import dotenv from 'dotenv';

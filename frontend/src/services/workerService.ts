@@ -1,3 +1,4 @@
+// Service layer: handles workerService API calls and request logic.
 import api from './api';
 import type { ApiResponse, Worker, WorkerProfile, WorkerStats, PaginatedResponse } from '../types';
 

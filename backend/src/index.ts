@@ -1,3 +1,4 @@
+// Backend comment: index
 import express, { Application } from 'express';
 import http from 'http';
 import dotenv from 'dotenv';

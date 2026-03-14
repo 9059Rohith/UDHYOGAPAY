@@ -1,3 +1,4 @@
+// UI component: renders and manages the EmptyState feature block.
 import React from 'react';
 import { Inbox } from 'lucide-react';
 

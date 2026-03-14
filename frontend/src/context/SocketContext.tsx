@@ -1,3 +1,4 @@
+// Context module: provides shared SocketContext state and actions across the app.
 import React, { createContext, useContext, useEffect, ReactNode } from 'react';
 import { Socket } from 'socket.io-client';
 import socketService from '../services/socketService';

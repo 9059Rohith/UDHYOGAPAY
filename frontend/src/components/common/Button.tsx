@@ -1,3 +1,4 @@
+// UI component: renders and manages the Button feature block.
 import React, { ButtonHTMLAttributes } from 'react';
 import { cn } from '../../utils/cn';
 

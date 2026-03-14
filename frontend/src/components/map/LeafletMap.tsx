@@ -1,3 +1,4 @@
+// UI component: renders and manages the LeafletMap feature block.
 import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';

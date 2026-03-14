@@ -1,3 +1,4 @@
+// Context module: provides shared MapContext state and actions across the app.
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import type { MapPosition } from '../types';
 import { MAP_CONFIG } from '../utils/constants';

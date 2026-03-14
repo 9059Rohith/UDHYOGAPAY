@@ -1,3 +1,4 @@
+// Context module: provides shared AuthContext state and actions across the app.
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import api from '../services/api';
 import { AuthState, LoginCredentials, RegisterData } from '../types/user';

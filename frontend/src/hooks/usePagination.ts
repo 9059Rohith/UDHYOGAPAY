@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable usePagination state and behavior.
 import { useState, useMemo } from 'react';
 
 export interface PaginationOptions {

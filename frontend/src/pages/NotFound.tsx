@@ -1,3 +1,4 @@
+// Page feature: drives the NotFound screen and its user interactions.
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Home } from 'lucide-react';

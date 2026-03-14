@@ -1,3 +1,4 @@
+// Page feature: drives the Payouts_Backup screen and its user interactions.
 import React, { useState, useEffect } from 'react';
 import {
   Box,

@@ -1,3 +1,4 @@
+// Backend comment: WorkerApplication
 import mongoose, { Document, Schema } from 'mongoose';
 
 export interface IWorkerApplication extends Document {

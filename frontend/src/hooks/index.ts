@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable index state and behavior.
 export { useAuth } from './useAuth';
 export { useSocket } from './useSocket';
 export { useGeolocation } from './useGeolocation';

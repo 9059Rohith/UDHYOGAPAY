@@ -1,3 +1,4 @@
+// Backend comment: database
 import mongoose from 'mongoose';
 
 export const connectDatabase = async (): Promise<void> => {

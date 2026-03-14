@@ -1,3 +1,4 @@
+// Service layer: handles locationService API calls and request logic.
 import api from './api';
 
 export const locationService = {

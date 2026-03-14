@@ -1,3 +1,4 @@
+// Context module: provides shared index state and actions across the app.
 export { AuthProvider, useAuth } from './AuthContext';
 export { SocketProvider, useSocket } from './SocketContext';
 export { MapProvider, useMap } from './MapContext';

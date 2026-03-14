@@ -1,3 +1,4 @@
+// UI component: renders and manages the KPICard feature block.
 import React from 'react';
 import { LucideIcon, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 import { Card } from './Card';

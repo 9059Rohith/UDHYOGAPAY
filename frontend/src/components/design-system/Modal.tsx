@@ -1,3 +1,4 @@
+// UI component: renders and manages the Modal feature block.
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { clsx } from 'clsx';

@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useSocket state and behavior.
 import { useContext } from 'react';
 import { SocketContext, SocketContextType } from '../context/SocketContext';
 

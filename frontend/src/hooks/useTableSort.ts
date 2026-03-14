@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useTableSort state and behavior.
 import { useState, useCallback } from 'react';
 
 export type SortDirection = 'asc' | 'desc';

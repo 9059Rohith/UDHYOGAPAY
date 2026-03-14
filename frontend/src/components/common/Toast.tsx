@@ -1,3 +1,4 @@
+// UI component: renders and manages the Toast feature block.
 import React from 'react';
 import { useToast } from '../../context/ToastContext';
 import { CheckCircle, XCircle, AlertCircle, Info, X } from 'lucide-react';

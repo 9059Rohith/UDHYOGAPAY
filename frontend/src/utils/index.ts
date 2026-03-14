@@ -1,4 +1,5 @@
-﻿export * from './constants';
+// Utility module: contains helper logic for index operations.
+export * from './constants';
 export * from './formatters';
 export * from './validators';
 export * from './distance';

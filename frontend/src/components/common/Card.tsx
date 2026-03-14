@@ -1,3 +1,4 @@
+// UI component: renders and manages the Card feature block.
 import React from 'react';
 import { cn } from '../../utils/cn';
 

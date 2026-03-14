@@ -1,3 +1,4 @@
+// UI component: renders and manages the Textarea feature block.
 import { TextareaHTMLAttributes, forwardRef } from 'react';
 import { cn } from '../../utils/cn';
 

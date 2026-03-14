@@ -1,3 +1,4 @@
+// Page feature: drives the ResetPassword screen and its user interactions.
 import React, { useState } from 'react';
 import { useNavigate, useParams, Link } from 'react-router-dom';
 import { Navbar } from '../../components/common/Navbar';

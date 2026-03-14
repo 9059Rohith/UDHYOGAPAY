@@ -1,3 +1,4 @@
+// Backend comment: chatController
 import { Response } from 'express';
 import { AuthRequest } from '../middleware/auth';
 import Message from '../models/Message';

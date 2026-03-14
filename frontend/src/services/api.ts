@@ -1,3 +1,4 @@
+// Service layer: handles api API calls and request logic.
 import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosResponse } from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';

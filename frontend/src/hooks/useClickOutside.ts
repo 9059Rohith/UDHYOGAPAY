@@ -1,3 +1,4 @@
+// Custom hook: encapsulates reusable useClickOutside state and behavior.
 import { useEffect, useRef } from 'react';
 
 export function useClickOutside<T extends HTMLElement = HTMLElement>(

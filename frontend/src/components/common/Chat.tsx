@@ -1,3 +1,4 @@
+// UI component: renders and manages the Chat feature block.
 import React, { useState, useEffect, useRef } from 'react';
 import { chatService } from '../../services/chatService';
 import { useSocket } from '../../hooks/useSocket';

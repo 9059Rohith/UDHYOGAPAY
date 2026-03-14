@@ -1,3 +1,4 @@
+// UI component: renders and manages the Skeleton feature block.
 import React from 'react';
 import { clsx } from 'clsx';
 

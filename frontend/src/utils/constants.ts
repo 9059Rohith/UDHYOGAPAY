@@ -1,3 +1,4 @@
+// Utility module: contains helper logic for constants operations.
 export const PROFESSIONS = [
   { value: 'plumber', label: 'Plumber', icon: '🔧' },
   { value: 'electrician', label: 'Electrician', icon: '⚡' },
