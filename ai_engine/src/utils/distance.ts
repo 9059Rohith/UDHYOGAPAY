@@ -21,6 +21,7 @@ export function calculateDistance(point1: Location, point2: Location): number {
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   const distance = R * c;
 
+  // Round to 2 decimals to keep API responses compact and consistent.
   return Math.round(distance * 100) / 100;
 }
 
