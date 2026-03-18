@@ -7,6 +7,7 @@ import { MatchRequest, Worker } from './types';
 dotenv.config();
 
 const app = express();
+// Keep a local default so the service starts even without environment configuration.
 const PORT = process.env.PORT || 5002;
 
 app.use(cors());
