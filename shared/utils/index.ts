@@ -145,6 +145,7 @@ export const getStatusColor = (
 };
 
 export const generateId = (): string => {
+  // Lightweight ID for client-side use; not intended for security-sensitive identifiers.
   return Math.random().toString(36).substr(2, 9);
 };
 
