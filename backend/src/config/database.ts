@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 
 export const connectDatabase = async (): Promise<void> => {
   try {
+    // Use local MongoDB during development when MONGODB_URI is not set.
     const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/udhyogapay';
     
     await mongoose.connect(mongoUri);
