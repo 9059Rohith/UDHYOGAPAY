@@ -23,6 +23,7 @@ export const CONSTANTS = {
     OFFLINE: 'offline'
   },
   
+  // Matching uses meters for geospatial queries; 5000m is the default 5km radius.
   MAX_SEARCH_RADIUS: 5000, // 5km in meters
   BOOKING_TIMEOUT: 30000, // 30 seconds
   LOCATION_UPDATE_INTERVAL: 30000, // 30 seconds
