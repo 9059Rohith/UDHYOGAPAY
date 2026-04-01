@@ -8,12 +8,12 @@ UdhyogaPay is a production-grade, full-stack hyperlocal marketplace platform tha
 
 ## Team Details
 
-| Name | Roll Number | Role |
-|---|---|---|
-| **Rohith Kumar Dhamagatla** | CB.SC.U4CSE23018 | Backend Lead — Auth, Matching, Reviews, User Module |
-| C. Kalyan Kumar Reddy | CB.SC.U4CSE23060 | Database & QA Lead |
-| T. Venkataramana | CB.SC.U4CSE23055 | Frontend Lead |
-| VAB Jashwanth Reddy | CB.SC.U4CSE23058 | Mobile & Integration |
+| Name | Roll Number |
+|---|---|
+| **Rohith Kumar Dhamagatla** | CB.SC.U4CSE23018 |
+| C. Kalyan Kumar Reddy | CB.SC.U4CSE23060 | 
+| T. Venkataramana | CB.SC.U4CSE23055 |
+| VAB Jashwanth Reddy | CB.SC.U4CSE23058 |
 
 - **Guide:** T. Senthil Kumar
 - **Team No:** 02
