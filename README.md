@@ -430,9 +430,6 @@ Deployment guides: [`RAILWAY_DEPLOYMENT.md`](./RAILWAY_DEPLOYMENT.md), [`DEPLOYM
 
 ---
 
-## 👤 Contributors
-
-- **[9059Rohith](https://github.com/9059Rohith)** — Rohith Kumar Dhamagatla
 
 ---
 
