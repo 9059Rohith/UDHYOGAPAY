@@ -1,3 +1,5 @@
+> **Live deployment verified — 23 November 2026:** [Open UdhyogaPay](https://ajeya95-config-repair-env.hf.space) · [Database readiness](https://ajeya95-config-repair-env.hf.space/ready). Hosted checks passed for registration, persisted login, secure cookies, authenticated booking history and Socket.IO transport. Online Razorpay payments are not configured; the app retains its cash-payment workflow. Free CPU hosting may sleep when idle, so uninterrupted uptime is not guaranteed.
+
 <div align="center">
 
 # 🛠️ UdhyogaPay
