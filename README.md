@@ -1,5 +1,7 @@
 > **Live deployment verified — 23 November 2026:** [Open UdhyogaPay](https://ajeya95-config-repair-env.hf.space) · [Database readiness](https://ajeya95-config-repair-env.hf.space/ready). Hosted checks passed for registration, persisted login, secure cookies, authenticated booking history and Socket.IO transport. Online Razorpay payments are not configured; the app retains its cash-payment workflow. Free CPU hosting may sleep when idle, so uninterrupted uptime is not guaranteed.
 
+> **Deployed source:** the captured, tested release is available in the [hosting source tree](https://huggingface.co/spaces/Ajeya95/config_repair_env/tree/main/udhyogapay_release). It includes the same-origin container and the static-asset/health-probe rate-limit fix. The GitHub default branch may differ from that local release snapshot.
+
 <div align="center">
 
 # 🛠️ UdhyogaPay
