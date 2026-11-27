@@ -66,3 +66,6 @@ coverage/
 
 # Misc
 *.local
+
+# Local activity records
+activity_log.txt
